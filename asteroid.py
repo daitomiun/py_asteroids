@@ -10,5 +10,4 @@ class Asteroid(CircleShape):
 
 
     def update(self, dt):
-        print(f"asteroid vel: {self.velocity}")
         self.position += self.velocity * dt
