@@ -1,4 +1,5 @@
 import pygame
+from pygame.sprite import Group
 from constants import *
 from player import Player
 
@@ -16,6 +17,12 @@ def main():
 
     p_x_position = SCREEN_WIDTH / 2
     p_y_position = SCREEN_HEIGHT / 2
+
+    updatable = Group()
+    drawable = Group()
+
+    Player.containers = (updatable, drawable)
+
     player = Player(p_x_position, p_y_position)
 
     while True:
@@ -25,10 +32,14 @@ def main():
 
         dt = clock.tick(max_fps) / 1000
 
-        player.update(dt)
+        for obj in updatable:
+            obj.update(dt)
 
         screen.fill("black")
-        player.draw(screen)
+
+        for obj in drawable:
+            player.draw(screen)
+
         pygame.display.flip()
 
 
