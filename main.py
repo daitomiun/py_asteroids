@@ -6,6 +6,8 @@ from constants import *
 from player import Player
 import sys
 
+from shot import Shot
+
 def main():
     pygame.init()
 
@@ -24,8 +26,10 @@ def main():
     updatable = Group()
     drawable = Group()
     asteroids = Group()
+    shots = Group()
 
     Player.containers = (updatable, drawable)
+    Shot.containers = (updatable, drawable, shots)
     Asteroid.containers = (updatable, drawable, asteroids)
     AsteroidField.containers = (updatable)
 
@@ -54,8 +58,6 @@ def main():
                 sys.exit()
 
         pygame.display.flip()
-
-
 
 
 if __name__ == "__main__":
