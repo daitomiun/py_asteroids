@@ -57,6 +57,13 @@ def main():
                 print("Game over!")
                 sys.exit()
 
+            for shot in shots:
+                detect_shot = obj.detect_shape(shot)
+                if detect_shot:
+                    obj.split()
+                    shot.kill()
+
+            
         pygame.display.flip()
 
 
